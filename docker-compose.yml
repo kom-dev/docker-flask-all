@@ -12,9 +12,9 @@ services:
         env_file: ./.env
         image: ${JMETER_TESTS_IMAGE}
         container_name: ${JMETER_TESTS_INSTANCE}
-        build: ./jmeter_jmx
+        build: ./jmeter_tests
         volumes:
-            - ./jmeter_jmx/results:/results
+            - ./jmeter_tests/results:/results
         links:
            - flask_server
         command: ['-H', $FLASK_SERVER_INSTANCE, '-P', '5000']
