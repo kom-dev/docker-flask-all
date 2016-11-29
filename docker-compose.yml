@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+    flask_server:
+        env_file: ./.env
+        image: ${FLASK_SERVER_IMAGE}
+        container_name: ${FLASK_SERVER_INSTANCE}
+        build: .
+        ports:
+            - "5000:5000"
+    jmeter:
+        env_file: ./.env
+        image: ${JMETER_TESTS_IMAGE}
+        container_name: ${JMETER_TESTS_INSTANCE}
+        build: ./jmeter_jmx
+        volumes:
+            - ./jmeter_jmx/results:/results
+        links:
+           - flask_server
+        command: ['-H', $FLASK_SERVER_INSTANCE, '-P', '5000']
+    selenium:
+        env_file: ./.env
+        image: ${SELENIUM_IMAGE}
+        container_name: ${SELENIUM_INSTANCE}
+        ports:
+            - "5900:5900"
+        links:
+            - flask_server
+    selenium_tests:
+        env_file: ./.env
+        image: ${SELENIUM_TESTS_IMAGE}
+        container_name: ${SELENIUM_TESTS_INSTANCE}
+        build: ./selenium_tests
+        volumes:
+            - ./selenium_tests/results:/results
+        links:
+            - selenium

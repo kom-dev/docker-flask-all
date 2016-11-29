@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Web Server Devops Formation{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>La division de <FONT color="blue"><I>{% if val1 %}{{ val1 }}{% else %} valeur 1 {% endif %} </I></FONT>  par <FONT color="blue"><I>{% if val2 %}{{ val2 }}{% else %} valeur 2 {% endif %}</I></FONT>  est égale à : {% if result %}{{ result }}{% else %}Pas de Calcul{% endif %}</h1>
+</div>
+{{ wtf.quick_form(form) }}
+{% endblock %}
