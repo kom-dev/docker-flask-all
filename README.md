@@ -14,5 +14,4 @@ Les résultats des tests se trouveront dans les repertoires: `.\jmeter_jmx\resul
 - [Python3]() Python 3.4
 - [Docker] (https://docs.docker.com/engine/installation/) Docker environment from linux
 - [Docker-Compose](https://docs.docker.com/compose/install/) Docker compose python install
-- [Pycharm](https://www.jetbrains.com/pycharm/download/#section=linux) Python IDE
 - [RealVNC] (https://www.realvnc.com/download/vnc/) VNC viewer/server
